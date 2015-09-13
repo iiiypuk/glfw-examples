@@ -1,0 +1,17 @@
+CC=tcc
+CFLAGS= -I./win32/include -L./win32/lib
+
+all: fps_counter windows_icon
+
+fps_counter:
+	$(CC) $(CFLAGS) fps_counter.c -lglfw3 -lopengl32 -o fps_counter.exe
+
+windows_icon: icon.o
+	$(CC) $(CFLAGS) windows_icon.c icon.o -lglfw3 -lopengl32 -o windows_icon.exe
+
+icon.o:
+	windres -O coff win32/icon/resource.rc -o icon.o	
+
+clean:
+	del *.o
+	del *.exe

@@ -4,7 +4,11 @@
 
   Compile: gcc fps_counter.c -lglfw -lGL
 */
+
 #include <stdio.h>
+#ifndef _WIN32
+  #include <windows.h>
+#endif
 #include "GLFW/glfw3.h"
 
 int main()
@@ -26,7 +30,7 @@ int main()
 
   int frames = 0;
   double t, t0, fps;
-  char title_string[200];
+  char title_string[10];
 
   t0 = glfwGetTime();
 
@@ -49,7 +53,7 @@ int main()
     if((t - t0) > 1.0 || frames == 0)
     {
       fps = (double)frames / (t - t0);
-      sprintf(title_string, "FPS: %.1f FPS", fps);
+      sprintf(title_string, "FPS: %.1f", fps);
       glfwSetWindowTitle(window, title_string);
       t0 = t;
       frames = 0;
