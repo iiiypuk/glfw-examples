@@ -1,14 +1,9 @@
 /*
   GLFW3 frame rate counter example
   Source: https://github.com/IIIypuk/glfw-examples
-
-  Compile: gcc fps_counter.c -lglfw -lGL
 */
 
 #include <stdio.h>
-#ifndef _WIN32
-  #include <windows.h>
-#endif
 #include "GLFW/glfw3.h"
 
 int main()
